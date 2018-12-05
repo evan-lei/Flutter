@@ -12,9 +12,7 @@ class Index extends StatefulWidget {
   State<Index> createState() => new _IndexState();
 }
 
-class _IndexState extends State<Index> with TickerProviderStateMixin,AutomaticKeepAliveClientMixin {
-  bool get wantKeepAlive=>true;
-
+class _IndexState extends State<Index> with TickerProviderStateMixin {
   int _currentIndex = 0;
   List<NavigationIconView> _navigationViews;
   List<StatefulWidget> _pageList;
