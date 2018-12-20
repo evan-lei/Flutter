@@ -3,6 +3,7 @@ import 'package:flutter_app_2/global_config.dart';
 import 'recommend.dart';
 import 'follow.dart';
 import 'package:flutter_app_2/temp.dart';
+import 'hotRank.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -99,7 +100,7 @@ class _HomePageState extends State<HomePage> {
               children: [
                 new Follow(),
                 new Recommend(),
-                new Temp()
+                new HotRank()
               ],
           ),
         ),

@@ -167,10 +167,6 @@ class _RecommendState extends State<Recommend> with AutomaticKeepAliveClientMixi
         setState(() {});
       });
     });
-//    return Future.delayed(Duration(seconds: 1),(){
-//      if (_dataArray == null) _dataArray = List.generate(0, null);
-//      _getData(true, 'top');
-//    });
   }
 
   Future<Null> _more() {
@@ -188,47 +184,6 @@ class _RecommendState extends State<Recommend> with AutomaticKeepAliveClientMixi
         setState(() {});
       }
     });
-
-//    if (!isLoadingMore) {
-//      setState(() {isLoadingMore = true;});
-//      if (index < (apiTypeList.length - 1)) {
-//        String type = apiTypeList[index];
-//        index++;
-//        _getData(false, type);
-//      } else {
-//        setState(() {isLoadingMore = false;});
-//      }
-//    }
-  }
-
-  Future<Null> _getData(bool isFresh, String type) async {
-    var url = 'http://v.juhe.cn/toutiao/index?type='+type+'&key=aa4e398ed507e49248714b7ff097e93e';
-    var httpClient = new HttpClient();
-
-    if (isFresh) _dataArray.clear();
-
-    try {
-      var request = await httpClient.getUrl(Uri.parse(url));
-      var response = await request.close();
-      if (response.statusCode == HttpStatus.ok) {
-        var jsonString = await response.transform(Utf8Decoder()).join();
-        var jsonResponse = json.decode(jsonString);
-        var result = jsonResponse['result'];
-        print(result);
-        ToutiaoResponseModel responseModel = ToutiaoResponseModel.fromJson(result);
-        setState(() {
-          _dataArray.addAll(responseModel.data);
-          isLoadingMore = false;
-        });
-      }
-      else {
-        print('response error');
-      }
-    }
-    catch (exception) {
-      print('exception');
-    }
-
   }
 
 }
